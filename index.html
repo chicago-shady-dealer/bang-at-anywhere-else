@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bang at Anywhere Else</title>
+  <title>Bang at Anywhere Else (Not At The University of Chicago)</title>
   <link rel="stylesheet" href="static/bootstrap.min.css"/>
   <style type='text/css'>
   html{background:#e8e8e8;}
   body{background:#fff;padding:1em;min-width:90%;margin:1em auto;}
   body{border:1px solid #ccc;border-top:0;}
   h1{line-height:100px;color:black;}
+  h1 span{display:none;}
   #header img{height:100px;}
   #header{border-bottom:1px solid #eee;}
   #message p{font:1.5em/1.5em Georgia,serif;width:80%;margin:2em auto;}
@@ -16,6 +17,10 @@
   #footer{color:#ccc;margin-top:10em;}
   #footer a{color:#aaa;}
   </style>
+  <script type='text/javascript'>
+    /* this is really jank */
+    document.title = 'Bang at Anywhere Else';
+  </script>
 </head>
 <body class='container'>
   <div id="fb-root"></div>
@@ -29,7 +34,7 @@
   <div class='row-fluid' id='header'>
     <h1 class='span10'>
       <img src='static/logo.jpg'/>
-      Bang At Anywhere Else
+      Bang At Anywhere Else <span>other than UChicago</span>
     </h1>
   </div>
   <div class='row-fluid' id='message'>
