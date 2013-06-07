@@ -16,6 +16,7 @@
   #footer{text-align:center;font-size:0.9em;}
   #footer{color:#ccc;margin-top:10em;}
   #footer a{color:#aaa;}
+  .nefarious{position:fixed;top:-9999pt;}
   </style>
   <script type='text/javascript'>
     /* this is really jank */
@@ -41,29 +42,36 @@
     <p>Tired of the losers you regularly date? Why not try... <strong>anything except the University of Chicago?</strong> We've guaranteed that you won't run in to any other U of C students here... in fact, you aren't even allowed to list them! Go ahead, I dare you:</p>
   </div>
   <div class='row-fluid'>
-    <form class='offset3 span6 form-horizontal' id='sign-up'>
+    <iframe class='nefarious' id='sign-up-frame' name='sign-up-frame'></iframe>
+    <form class='offset3 span6 form-horizontal' id='sign-up'
+     action='https://docs.google.com/forms/d/1PDPSbKsPINtkRgbMkQnTLgBVQusXuo9tQ32ZSz_mUzo/formResponse'
+     target='sign-up-frame' method='post'>
       <label class='control-group'>
         <span class='control-label'>Your CNetID:</span>
         <div class='controls'>
-          <input placeholder='president@uchicago.edu' id='cnetid' type='text'>
+          <input placeholder='president@uchicago.edu' name='entry.1207189808' id='cnetid' type='text'>
         </div>
       </label>
       <label class='control-group'>
         <span class='control-label'>Who you'd like to bang:</span>
         <div class='controls'>
-          <input placeholder='neubauer@aramark.com' id='bang' type='text'>
+          <input placeholder='neubauer@aramark.com' name='entry.948985729' id='bang' type='text'>
         </div>
       </label>
+      <input type='hidden' name='draftResponse' value='[]'/>
+      <input type='hidden' name='pageHistory' value='0'/>
       <div class='control-group controls'>
         <input type="submit" class="btn primary" disabled="disabled" id="button" value="Bang That Thang"/>
       </div>
       <div class='control-group controls'>
-        <div class='fb-like' data-href="http://www.bangatanywhereelse.com" data-send="false" data-layout="box_count" data-show-faces="false"></div>
+        <div class='fb-like' data-href="http://www.bangatanywhereelse.com"
+          data-send="false" data-layout="box_count" data-show-faces="false"></div>
       </div>
     </form>
   </div>
   <div class='row-fluid' id='footer'>
-    <p>This site is another proud publication of the only <a href='http://www.chicagoshadydealer.com/'>intentional</a> humor publication at the University of Chicago.</p> 
+    <p>This site is another proud publication of the only <a href='http://www.chicagoshadydealer.com/'>intentional</a> humor publication at the University of Chicago.</p>
+    <p>Actually interested in sex? Try the actual <a href="http://bangatuchicago.com">Bang@UChicago</a>.</p> 
   </div>
   <script type='text/javascript'>
     (function() {
@@ -71,6 +79,12 @@
       var bangControl = document.getElementById('bang');
       var button = document.getElementById('button');
       var form = document.getElementsByTagName('form')[0];
+      var iframe = document.getElementById('sign-up-frame');
+      
+      iframe.src = '';
+      
+      var articleURL = ("http://chicagoshadydealer.com/articles"+
+           "/173-uchicago-students-flock-to-bang-at-anywhere-else");
       
       var validate = function() {
         return ((cnetidControl.value.indexOf('@') != -1) &&
@@ -85,10 +99,20 @@
       
       form.onsubmit = function() {
         if (validate()) {
-          window.location.href = 'http://chicagoshadydealer.com/articles/173';
-        };
-        return false;
+          setTimeout(function() {
+            window.location.href = articleURL;
+          }, 2000);
+          return true;
+        } else {
+          return false;
+        }
       };
+      
+      setTimeout(function() {
+        iframe.onload = function() {
+          window.location.href = articleURL;
+        }
+      }, 100);
       
       cnetidControl.onkeyup = bangControl.onkeyup = update;
     })();
