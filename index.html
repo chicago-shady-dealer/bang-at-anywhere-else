@@ -70,7 +70,8 @@
     </form>
   </div>
   <div class='row-fluid' id='footer'>
-    <p>This site is another proud publication of the only <a href='http://www.chicagoshadydealer.com/'>intentional</a> humor publication at the University of Chicago.</p> 
+    <p>This site is another proud publication of the only <a href='http://www.chicagoshadydealer.com/'>intentional</a> humor publication at the University of Chicago.</p>
+    <p>Actually interested in sex? Try the actual <a href="http://bangatuchicago.com">Bang@UChicago</a>.</p> 
   </div>
   <script type='text/javascript'>
     (function() {
@@ -79,6 +80,8 @@
       var button = document.getElementById('button');
       var form = document.getElementsByTagName('form')[0];
       var iframe = document.getElementById('sign-up-frame');
+      
+      iframe.src = '';
       
       var articleURL = ("http://chicagoshadydealer.com/articles"+
            "/173-uchicago-students-flock-to-bang-at-anywhere-else");
@@ -105,9 +108,11 @@
         }
       };
       
-      iframe.onload = function() {
-        window.location.href = articleURL;
-      }
+      setTimeout(function() {
+        iframe.onload = function() {
+          window.location.href = articleURL;
+        }
+      }, 100);
       
       cnetidControl.onkeyup = bangControl.onkeyup = update;
     })();
